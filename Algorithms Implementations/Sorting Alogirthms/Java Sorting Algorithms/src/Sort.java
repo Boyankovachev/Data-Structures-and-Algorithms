@@ -68,7 +68,7 @@ public class Sort {
     private static void merge(
             int[] arr, int[] leftArray, int[] rightArray,
             int leftArraySize, int rightArraySize){
-
+        //merge for merge sort
         int i=0,j=0,k=0;
         while (i<leftArraySize && j<rightArraySize){
             if(leftArray[i] <= rightArray[j]){
@@ -84,6 +84,37 @@ public class Sort {
         while (j<rightArraySize){
             arr[k++] = rightArray[j++];
         }
+    }
+
+    public static void quickSort(int[] arr, int beginIndex, int endIndex){
+        if(beginIndex < endIndex){
+            int partitionIndex = partition(arr, beginIndex, endIndex);
+
+            quickSort(arr, beginIndex, partitionIndex-1);
+            quickSort(arr, partitionIndex+1, endIndex);
+
+        }
+    }
+
+    private static int partition(int[] arr, int beginIndex, int endIndex){
+        //partition for quick sort
+        int pivot = arr[endIndex];
+        int i = beginIndex - 1;
+        for(int j=beginIndex; j<endIndex; j++){
+            if(arr[j] <= pivot){
+                i++;
+
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i+1];
+        arr[i+1] = arr[endIndex];
+        arr[endIndex] = temp;
+
+        return i+1;
     }
 
 }

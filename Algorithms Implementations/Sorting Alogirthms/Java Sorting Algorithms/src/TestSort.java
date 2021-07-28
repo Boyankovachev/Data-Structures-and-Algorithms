@@ -71,4 +71,12 @@ public class TestSort {
         assert !compareArrays(arrTest, arrUnsorted);
     }
 
+    @Test
+    public void testQuickSort(){
+        int[] arrTest = arrUnsorted.clone();
+        Sort.quickSort(arrTest, 0, arrTest.length-1);
+        assert compareArrays(arrTest, arrSorted);
+        assert !compareArrays(arrTest, arrUnsorted);
+    }
+
 }
